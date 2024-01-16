@@ -76,3 +76,6 @@ networks:
 使用此 `docker-compose.yml` 文件，您可以通过运行 `docker-compose up` 命令来启动所有服务。如果要在后台运行这些服务，请使用 `docker-compose up -d` 命令。在进行任何操作之前，请确保 `Dockerfile` 位于相应的 `meetgo` 和 `meetyou` 目录中，并且它们符合您项目的构建需求。
 
 当您运行 "docker-compose build --no-cache","docker-compose up --build" 后，vue-app、go-app 和 db 服务将被创建并启动。您可以通过访问 http://localhost:8080 来访问 Vue 应用，通过 http://localhost:8081 来访问 Go 应用。
+
+
+![Alt text](image.png)

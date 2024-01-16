@@ -19,7 +19,7 @@ export default {
     },
     methods: {
         fetchData() {
-            axios.get('http://localhost:8081/api/data')
+            axios.get('http://localhost:8081/api/user')
                 .then(response => {
                     this.data = response.data;
                 })

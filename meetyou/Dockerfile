@@ -1,20 +1,16 @@
-# 使用官方 Node.js 镜像
-FROM node:14
+FROM node:20
 
-# 设置工作目录
 WORKDIR /app
 
-# 将 package.json 和 package-lock.json 复制到工作目录
+# 复制 package.json 和 package-lock.json
 COPY ./package*.json ./
 
-# 安装项目依赖
+# 安装依赖
 RUN npm install
 
-# 拷贝项目文件和文件夹到工作目录
+# 复制项目文件
 COPY . .
 
-# 暴露端口
 EXPOSE 8080
 
-# 运行 Vue 应用
 CMD ["npm", "run", "serve"]

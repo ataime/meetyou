@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
@@ -12,6 +14,10 @@ import (
 type User struct {
 	gorm.Model
 	Name string
+}
+
+type UserResponse struct {
+	Data []User
 }
 
 var db *gorm.DB
@@ -33,6 +39,9 @@ func initDB() {
 }
 
 func main() {
+
+	time.Sleep(30 * time.Second) // 30秒等待mysql启动
+
 	initDB()
 	router := gin.Default()
 	router.GET("/", UserHandle)
@@ -51,5 +60,10 @@ func UserHandle(c *gin.Context) {
 		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
 		return
 	}
-	c.JSON(http.StatusOK, user)
+
+	fmt.Println("++++++++++: ", user)
+
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Content-Type", "application/json")
+	c.JSON(http.StatusOK, UserResponse{Data: []User{user}})
 }

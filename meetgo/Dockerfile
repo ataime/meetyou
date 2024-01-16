@@ -1,6 +1,6 @@
 # Use the official Golang image to create a build artifact.
 # This is multi-stage building. In the first stage, we build the binary.
-FROM golang:1.16 as builder
+FROM golang:1.20 as builder
 
 # Set the working directory outside $GOPATH to enable the support for modules.
 WORKDIR /app
