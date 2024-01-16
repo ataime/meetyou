@@ -5,7 +5,7 @@ FROM node:14
 WORKDIR /app
 
 # 将 package.json 和 package-lock.json 复制到工作目录
-COPY ./meetyou/package*.json ./
+COPY ./package*.json ./
 
 # 安装项目依赖
 RUN npm install

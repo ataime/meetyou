@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   vue-app:
-    build: .
+    build: ./meetyou
     ports:
       - "8080:8080"
     volumes:
@@ -10,3 +10,33 @@ services:
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
+
+  go-app:
+    build: ./meetgo
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=123456
+      - DB_NAME=meetyou
+
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=meetyou
+    volumes:
+      - db-data:/var/lib/mysql
+    restart: always
+
+volumes:
+  db-data:
+
+networks:
+  default:
+    driver: bridge
