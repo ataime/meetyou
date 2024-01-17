@@ -40,7 +40,7 @@ func initDB() {
 
 func main() {
 
-	time.Sleep(30 * time.Second) // 30秒等待mysql启动
+	time.Sleep(20 * time.Second) // 30秒等待mysql启动
 
 	initDB()
 	router := gin.Default()

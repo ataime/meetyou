@@ -83,3 +83,8 @@ volumes:
 当您运行 "docker-compose build --no-cache","docker-compose up --build" 后，vue-app、go-app 和 db 服务将被创建并启动。您可以通过访问 http://localhost:8080 来访问 Vue 应用，通过 http://localhost:8081 来访问 Go 应用。
 
 ![Alt text](image.png)
+
+
+
+## TODO
+1. 现在vue访问Go，是在浏览器完成的，需要宿主机IP，需要修改为代理模式。
