@@ -88,3 +88,19 @@ volumes:
 
 ## TODO
 1. 现在vue访问Go，是在浏览器完成的，需要宿主机IP，需要修改为代理模式。
+vue.config.js配置代理:
+```
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://go-app:8080', // Go 服务器地址
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/api' // 把 /api 替换成 "/api" 字符串
+        }
+      }
+    }
+  }
+```
+注意，这里使用的端口是8080,不是go-app对外映射的 8081 (浏览器访问8081), 另外需要在docker-compose.yml文件中配置 vue-app 的网络.
+
