@@ -86,7 +86,7 @@ volumes:
 
 
 
-## TODO
+## 已实现
 1. 现在vue访问Go，是在浏览器完成的，需要宿主机IP，需要修改为代理模式。
 vue.config.js配置代理:
 ```
